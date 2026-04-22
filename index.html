@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      [data-page] {
+        display: none;
+      }
+      [data-page].active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 font-sans min-h-screen">
+    <script>
+      const PROFILE = {
+        name: '고연우',
+        school: '중부대학교 정보보호학과',
+      }
+
+      const CONTACT = {
+        blogUrl: 'https://yws3267.tistory.com/',
+        blogLabel: 'Blog',
+        email: 'yws3267@gmail.com',
+        githubUrl: 'https://github.com/yws3267',
+      }
+
+      const TECH_STACK = [{ name: 'HTML' }, { name: 'CSS' }]
+
+      const PROJECTS = [
+        {
+          id: '1',
+          title: 'HCJ Demo',
+          description: '웹프로그래밍 02분반 2번째 과제',
+          link: 'https://hcj2026-2-ten.vercel.app/',
+          detail: {
+            longDescription: `웹프로그래밍 02분반의 2번째 과제물입니다.\n\n포함된 기능:\n- w3school 홈페이지 바로가기\n- w3school의 HTML5/CSS/Javascript 페이지 바로가기\n- 현재 날짜와 시각 표시\n- 배경색 바꾸기 버튼으로 홈 페이지 배경색 변경\n- 배워봅시다 버튼 마우스오버로 세 가지 프로그래밍 언어 아이콘과 간단한 설명 확인\n- 네비게이션 바를 통해 홈/정보/연락처 페이지로 연결`,
+            videoUrl: 'image/webpf1.mp4',
+          },
+        },
+        {
+          id: '2',
+          title: 'HTML 기본 태그 익히기',
+          description: '웹프로그래밍 02분반 3번째 과제',
+          link: 'https://hcj-demo-tau.vercel.app/',
+          detail: {
+            longDescription: `앞서 만든 HCJ Demo 프로그램의 개선판으로, 이전 버전의 기능과 함께 다음 기능을 추가했습니다.\n\n- list 태그를 이용한 정렬 페이지\n- table 태그를 이용한 시간표 페이지\n- 오디오와 비디오 재생 페이지\n- 입력 양식을 이용한 사용자 등록 페이지`,
+            videoUrl: 'image/webpf2.mp4',
+          },
+        },
+        {
+          id: '3',
+          title: '웹프로그래밍 팀 프로젝트: 암호학의 역사 전시',
+          description:
+            '웹프로그래밍 중간 팀 프로젝트로 제작한 암호학의 역사 정리 사이트',
+          link: 'https://crytpo-wp.vercel.app/',
+          detail: {
+            longDescription: `웹프로그래밍 팀프로젝트 과제를 활용해 팀원들과 함께 암호학의 역사에 대해 조사, 기록한 웹사이트입니다.\n\n암호학의 역사를 시대순으로 정리하고, 다양한 기능을 이용해 조사한 암호들을 더욱 쉽게 이해할 수 있도록 디자인했습니다.`,
+            images: [],
+            videoUrl: '',
+          },
+        },
+      ]
+    </script>
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <nav
+          class="hidden sm:flex space-x-4 text-sm font-medium"
+          id="desktop-nav"
+        ></nav>
+        <button class="sm:hidden p-2" id="hamburger-btn">
+          <svg
+            id="icon-menu"
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          <svg
+            id="icon-close"
+            class="w-5 h-5 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        id="mobile-nav"
+        class="hidden sm:hidden bg-white border-t border-gray-100 px-6 py-3 flex flex-col space-y-3"
+      ></div>
+    </header>
+
+    <div id="page-main" data-page class="active pt-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <section
+          id="home"
+          class="min-h-[80vh] flex flex-col justify-center items-center pt-20 pb-8"
+        >
+          <div class="text-center">
+            <h1
+              class="text-3xl md:text-4xl font-extrabold tracking-tight leading-snug text-gray-900"
+            >
+              PORTFOLIO
+            </h1>
+            <p class="mt-4 text-base max-w-2xl text-gray-700" id="school"></p>
+            <p class="mt-3 text-xl font-semibold text-gray-800" id="name"></p>
+          </div>
+        </section>
+
+        <section id="skills" class="pt-24 pb-12 min-h-[40vh]">
+          <h2
+            class="text-2xl font-bold border-b-2 border-cyan-600 pb-2 mb-8 text-gray-900"
+          >
+            TECHNOLOGY
+          </h2>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+            id="tech-list"
+          ></div>
+        </section>
+
+        <section id="projects" class="pt-24 pb-12 min-h-[40vh]">
+          <h2
+            class="text-2xl font-bold border-b-2 border-cyan-600 pb-2 mb-8 text-gray-900"
+          >
+            PROJECTS
+          </h2>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-8"
+            id="project-list"
+          ></div>
+        </section>
+
+        <section id="contact" class="pt-24 pb-12 min-h-[40vh]">
+          <h2
+            class="text-2xl font-bold border-b-2 border-cyan-600 pb-2 mb-8 text-gray-900"
+          >
+            CONTACT
+          </h2>
+          <div class="text-gray-500 text-sm flex items-center space-x-4">
+            <a
+              id="github-link"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:underline flex items-center space-x-1"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+              <span>GitHub</span>
+            </a>
+            <a
+              id="blog-link"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:underline flex items-center space-x-1"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+              <span id="blog-label"></span>
+            </a>
+          </div>
+          <div class="mt-3 text-gray-500 text-sm flex items-center">
+            <svg
+              class="w-4 h-4 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            <span id="email"></span>
+          </div>
+        </section>
+
+        <footer
+          class="py-6 text-center text-xs text-gray-500 border-t border-gray-200 mt-16"
+        >
+          © 2025 Portfolio. Built with HTML & Tailwind CSS.
+        </footer>
+      </div>
+    </div>
+
+    <div id="page-detail" data-page class="pt-16">
+      <div class="max-w-4xl mx-auto px-6 pt-28 pb-16">
+        <button
+          id="back-btn"
+          class="flex items-center text-sm text-gray-500 hover:text-cyan-600 transition-colors mb-8"
+        >
+          <svg
+            class="w-4 h-4 mr-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          목록으로 돌아가기
+        </button>
+
+        <h1
+          id="detail-title"
+          class="text-3xl font-extrabold text-gray-900 mb-2"
+        ></h1>
+        <div class="h-1 w-16 bg-cyan-600 rounded mb-8"></div>
+
+        <div id="detail-video-wrap" class="mb-10 hidden">
+          <h2 class="text-lg font-semibold text-gray-800 mb-3">참고 영상</h2>
+          <div
+            class="w-full rounded-xl overflow-hidden shadow-md"
+            style="aspect-ratio: 16/9"
+          >
+            <iframe
+              id="detail-video-iframe"
+              class="w-full h-full hidden"
+              allowfullscreen
+            ></iframe>
+            <video
+              id="detail-video-file"
+              class="w-full h-full hidden"
+              controls
+            ></video>
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <div
+            id="detail-images"
+            class="grid grid-cols-1 sm:grid-cols-2 gap-4"
+          ></div>
+          <div
+            id="detail-no-image"
+            class="w-full bg-gray-100 rounded-lg flex flex-col items-center justify-center border-2 border-dashed border-gray-300 py-20 hidden"
+          >
+            <svg
+              class="w-8 h-8 text-gray-400 mb-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
+            <span class="text-xs text-gray-400"
+              >images 배열에 경로를 넣으면 여기에 표시됩니다</span
+            >
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h2 class="text-lg font-semibold text-gray-800 mb-3">
+            프로젝트 설명
+          </h2>
+          <p
+            id="detail-desc"
+            class="text-gray-600 text-sm leading-relaxed whitespace-pre-line"
+          ></p>
+        </div>
+
+        <div id="detail-link-wrap">
+          <a
+            id="detail-link"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-5 py-3 bg-cyan-600 text-white font-semibold rounded-lg shadow hover:bg-cyan-700 transition duration-150"
+          >
+            <svg
+              class="w-4 h-4 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14.828 14.828a4 4 0 015.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+              />
+            </svg>
+            프로젝트 링크 →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('school').textContent = PROFILE.school
+      document.getElementById('name').textContent = PROFILE.name
+      document.getElementById('email').textContent = CONTACT.email
+      document.getElementById('github-link').href = CONTACT.githubUrl
+      document.getElementById('blog-link').href = CONTACT.blogUrl
+      document.getElementById('blog-label').textContent = CONTACT.blogLabel
+
+      const techList = document.getElementById('tech-list')
+      TECH_STACK.forEach((t) => {
+        techList.innerHTML += `
+      <div class="flex items-center space-x-3 p-4 rounded-lg bg-gray-50 border border-gray-200 hover:border-cyan-600 hover:scale-[1.03] transition-all duration-300 shadow-sm">
+        <svg class="w-5 h-5 text-cyan-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+        </svg>
+        <span class="text-sm font-medium text-gray-800">${t.name}</span>
+      </div>`
+      })
+
+      const projectList = document.getElementById('project-list')
+      PROJECTS.forEach((p) => {
+        const card = document.createElement('div')
+        card.className =
+          'cursor-pointer p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:border-cyan-400 transition-all duration-300 bg-white'
+        card.innerHTML = `
+      <h3 class="text-xl font-bold mb-2 text-gray-900">${p.title}</h3>
+      <p class="text-sm text-gray-600 mb-4">${p.description}</p>
+      <span class="text-cyan-600 text-sm font-medium flex items-center">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 015.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+        </svg>
+        자세히 보기 →
+      </span>`
+        card.addEventListener('click', () => showDetail(p))
+        projectList.appendChild(card)
+      })
+
+      const NAV_LINKS = [
+        { href: '#home', label: 'HOME' },
+        { href: '#skills', label: 'TECHNOLOGY' },
+        { href: '#projects', label: 'PROJECTS' },
+        { href: '#contact', label: 'CONTACT' },
+      ]
+      ;['desktop-nav', 'mobile-nav'].forEach((id) => {
+        const nav = document.getElementById(id)
+        const isMobile = id === 'mobile-nav'
+        NAV_LINKS.forEach((l) => {
+          const a = document.createElement('a')
+          a.href = l.href
+          a.textContent = l.label
+          a.className = isMobile
+            ? 'text-sm font-medium text-gray-600 hover:text-cyan-600'
+            : 'text-gray-600 hover:text-cyan-600 transition-colors px-2 py-1 rounded-md text-sm font-medium'
+          a.addEventListener('click', (e) => {
+            e.preventDefault()
+            showMain()
+            setTimeout(() => {
+              if (l.href === '#home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+                return
+              }
+              document
+                .getElementById(l.href.slice(1))
+                ?.scrollIntoView({ behavior: 'smooth' })
+            }, 50)
+            document.getElementById('mobile-nav').classList.add('hidden')
+            document.getElementById('icon-menu').classList.remove('hidden')
+            document.getElementById('icon-close').classList.add('hidden')
+          })
+          nav.appendChild(a)
+        })
+      })
+
+      document.getElementById('hamburger-btn').addEventListener('click', () => {
+        const nav = document.getElementById('mobile-nav')
+        const open = nav.classList.toggle('hidden')
+        document.getElementById('icon-menu').classList.toggle('hidden', !open)
+        document.getElementById('icon-close').classList.toggle('hidden', open)
+      })
+
+      function showMain() {
+        document.getElementById('page-main').classList.add('active')
+        document.getElementById('page-detail').classList.remove('active')
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+
+      function showDetail(p) {
+        document.getElementById('page-main').classList.remove('active')
+        document.getElementById('page-detail').classList.add('active')
+        window.scrollTo({ top: 0 })
+
+        document.getElementById('detail-title').textContent = p.title
+        document.getElementById('detail-desc').textContent =
+          p.detail.longDescription
+
+        if (p.link) {
+          document.getElementById('detail-link').href = p.link
+          document.getElementById('detail-link-wrap').classList.remove('hidden')
+        } else {
+          document.getElementById('detail-link-wrap').classList.add('hidden')
+        }
+
+        const iframe = document.getElementById('detail-video-iframe')
+        const videoEl = document.getElementById('detail-video-file')
+        const videoWrap = document.getElementById('detail-video-wrap')
+
+        if (p.detail.videoUrl) {
+          videoWrap.classList.remove('hidden')
+          const isYoutube =
+            p.detail.videoUrl.includes('youtube.com') ||
+            p.detail.videoUrl.includes('youtu.be')
+          if (isYoutube) {
+            iframe.src = p.detail.videoUrl
+            iframe.classList.remove('hidden')
+            videoEl.classList.add('hidden')
+            videoEl.src = ''
+          } else {
+            videoEl.src = p.detail.videoUrl
+            videoEl.classList.remove('hidden')
+            iframe.classList.add('hidden')
+            iframe.src = ''
+          }
+        } else {
+          videoWrap.classList.add('hidden')
+          iframe.src = ''
+          videoEl.src = ''
+        }
+
+        const imgGrid = document.getElementById('detail-images')
+        const noImg = document.getElementById('detail-no-image')
+        imgGrid.innerHTML = ''
+        if (p.detail.images.length > 0) {
+          noImg.classList.add('hidden')
+          p.detail.images.forEach((src, i) => {
+            imgGrid.innerHTML += `<img src="${src}" alt="스크린샷 ${i + 1}" class="w-full rounded-lg shadow-sm object-cover" style="aspect-ratio:16/9"/>`
+          })
+        } else {
+          noImg.classList.remove('hidden')
+        }
+      }
+
+      document.getElementById('back-btn').addEventListener('click', showMain)
+    </script>
+  </body>
+</html>
