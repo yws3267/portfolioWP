@@ -51,7 +51,7 @@ const PROJECTS = [
       '웹프로그래밍 기말 팀 프로젝트로 제작한 암호학의 역사 정리 사이트',
     link: 'https://cryptofinal-psi.vercel.app/',
     detail: {
-      longDescription: `웹프로그래밍 기말 팀프로젝트로 제작한 암호학의 역사 사이트입니다. 기존에 만들었던 암호학의 역사 페이지에 JavaScript를 추가해 직접 암호화 과정을 페험하며 학습할 수 있는 디자인으로 발전시켰습니다.`,
+      longDescription: `웹프로그래밍 기말 팀프로젝트로 제작한 암호학의 역사 사이트입니다. 기존에 만들었던 암호학의 역사 페이지에 JavaScript를 추가해 직접 암호화 과정을 체험하며 학습할 수 있는 디자인으로 발전시켰습니다.`,
       videoUrl: 'image/webpf4.mp4',
     },
   },
